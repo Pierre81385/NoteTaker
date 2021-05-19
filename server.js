@@ -16,7 +16,7 @@ app.use(express.json());
 //https://stackoverflow.com/questions/48248832/stylesheet-not-loaded-because-of-mime-type
 app.use(express.static("./Develop/public"));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "Develop/public/index.html"));
