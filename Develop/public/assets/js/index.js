@@ -4,11 +4,6 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-const express = require("express");
-
-const app = express();
-const PORT = 8080;
-
 if (window.location.pathname === "/notes") {
   noteTitle = document.querySelector(".note-title");
   noteText = document.querySelector(".note-textarea");
@@ -16,10 +11,6 @@ if (window.location.pathname === "/notes") {
   newNoteBtn = document.querySelector(".new-note");
   noteList = document.querySelectorAll(".list-container .list-group");
 }
-
-app.get("/notes", (req, res) => {
-  res.send("notes.html");
-});
 
 // Show an element
 const show = (elem) => {
