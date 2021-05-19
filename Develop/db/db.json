@@ -1,6 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
-]
+[{"title":"Test Title","text":"Test text"},{"title":"Peter's Note","text":"Save my thoughts!","id":"c36ba9d3-3748-4933-abf0-520d6c1413ef"},{"title":"Hello","text":"My name is Peter and I think this works now!","id":"f4ad6dad-b6ab-429b-8b56-133cc7855001"}]

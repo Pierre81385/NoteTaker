@@ -2,7 +2,15 @@ const express = require("./Develop/node_modules/express");
 const fs = require("fs");
 const path = require("path");
 
+const jsondb = require("./Develop/db/db.json");
+
+const { v4: uuidv4 } = require("uuid");
+uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+
 const app = express();
+
+app.use(express.json());
+app.use(express.static("./Develop/public"));
 
 const PORT = 3000;
 
@@ -16,15 +24,21 @@ app.get("/notes", function (req, res) {
 });
 
 app.get("/api/notes", (req, res) => {
-  fs.readFile(`${__dirname}/Develop/db/db.json`, (err, data) => {
+  console.log("Looking for saved notes");
+  res.sendFile(path.join(__dirname, "Develop/db/db.json"));
+});
+
+app.post("/api/notes", function (req, res) {
+  var newNote = req.body;
+  let uniqueID = uuidv4();
+  newNote.id = uniqueID;
+  jsondb.push(newNote);
+
+  fs.writeFile("./Develop/db/db.json", JSON.stringify(jsondb), function (err) {
     if (err) {
-      res.writeHead(500, { "Content-Type": "text/html" });
-      res.end(
-        "<html><head><title>Oops</title></head><body><h1>Oops, there was an error</h1></html>"
-      );
+      console.log(err);
     } else {
-      res.writeHead(200, { "Content-Type": "json" });
-      res.end(data);
+      res.json("Note Posted!");
     }
   });
 });
