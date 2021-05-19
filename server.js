@@ -9,7 +9,11 @@ uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 
 const app = express();
 
+//needed to PARSE JSON bodys
+//https://masteringjs.io/tutorials/express/body
 app.use(express.json());
+//fixes css error
+//https://stackoverflow.com/questions/48248832/stylesheet-not-loaded-because-of-mime-type
 app.use(express.static("./Develop/public"));
 
 const PORT = 3000;
