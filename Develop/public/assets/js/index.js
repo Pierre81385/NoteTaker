@@ -4,7 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-import express from "express";
+const express = require("express");
 
 const app = express();
 const PORT = 8080;
